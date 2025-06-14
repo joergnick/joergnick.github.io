@@ -4,16 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Jörg Nick</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
+        /* Self-hosted Variable Fonts using .ttf files */
+
+        /* Roboto Variable Font */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 100 900; /* Define the range of weights available in the variable font */
+            src: url('./fonts/Roboto-VariableFont_wght.ttf') format('truetype-variations'); /* Using .ttf with variations format */
+            font-display: swap;
+        }
+
+        /* Lora Italic Variable Font */
+        @font-face {
+            font-family: 'Lora';
+            font-style: italic; /* This font file specifically contains italic variations */
+            font-weight: 400 700; /* Adjust this range to match your Lora Italic font's actual weights */
+            src: url('./fonts/Lora-Italic-VariableFont_wght.ttf') format('truetype-variations'); /* Using .ttf with variations format */
+            font-display: swap;
+        }
+
+        /* If you also have a Lora Regular (non-italic) variable .ttf font, define it separately like this: */
+        @font-face {
+            font-family: 'Lora';
+            font-style: normal; /* This font file contains normal (upright) variations */
+            font-weight: 400 700; /* Adjust this range to match the Lora Regular font's actual weights */
+            src: url('./fonts/Lora-VariableFont_wght.ttf') format('truetype-variations');
+            font-display: swap;
+        }
+
+
         /* Basic Reset & Font Imports */
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8; /* Light grey background */
-            color: #333; /* Dark text for readability */
+            background-color: #f8f8f8;
+            color: #333;
         }
 
         /* Container for content */
@@ -21,31 +51,55 @@
             max-width: 960px;
             margin: 40px auto;
             padding: 20px;
-            background-color: #fff; /* White content background */
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
-            border-radius: 8px; /* Slightly rounded corners */
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
         }
 
-        /* Header Styling */
+        /* --- Header Styling --- */
         header {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding-bottom: 20px;
-            border-bottom: 1px solid #eee; /* Light separator */
+            border-bottom: 1px solid #eee;
             margin-bottom: 30px;
         }
 
-        header h1 {
-            font-family: 'Lora', serif;
-            font-weight: 700;
-            color: #2c3e50; /* Dark blue/grey for emphasis */
-            margin-bottom: 5px;
-            font-size: 2.5em;
+        .profile-picture {
+            width: 100px;
+            height: 140px;
+            border-radius: 5%;
+            object-fit: cover;
+            object-position: top center;
+            margin-right: 25px;
+            border: 2px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        header p {
+        .header-text-content {
+            text-align: left;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .header-text-content h1 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+
+        .header-text-content p {
             color: #666;
             font-size: 1.1em;
             margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .header-text-content p:last-child {
+            margin-bottom: 0;
         }
 
         /* Navigation */
@@ -63,15 +117,15 @@
 
         nav ul li a {
             text-decoration: none;
-            color: #007bff; /* Standard blue for links */
+            color: #007bff;
             font-weight: 500;
             padding: 5px 0;
             transition: color 0.3s ease;
         }
 
         nav ul li a:hover {
-            color: #0056b3; /* Darker blue on hover */
-            border-bottom: 2px solid #0056b3; /* Underline on hover */
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
         }
 
         /* Section Styling */
@@ -82,7 +136,7 @@
         }
 
         section:last-child {
-            border-bottom: none; /* No border for the last section */
+            border-bottom: none;
         }
 
         section h2 {
@@ -91,14 +145,14 @@
             color: #2c3e50;
             font-size: 1.8em;
             margin-top: 0;
-            border-left: 4px solid #007bff; /* Accent line */
+            border-left: 4px solid #007bff;
             padding-left: 10px;
             margin-bottom: 20px;
         }
 
         /* List Styling (e.g., Publications, Research Interests) */
         ul.bullet-list {
-            list-style: disc; /* Standard bullet points */
+            list-style: disc;
             margin-left: 20px;
             padding-left: 0;
         }
@@ -132,9 +186,12 @@
 <body>
     <div class="container">
         <header>
-            <h1>Dr. Jörg Nick</h1>
-            <p>Numerical analysis | Computational Mathematics | Scientific Machine Learning</p>
-            <p>ETH Zürich</p>
+            <img src="picture.jpg" alt="Jörg Nick Profile Picture" class="profile-picture">
+            <div class="header-text-content">
+                <h1>Jörg Nick</h1>
+                <p>Numerical analysis | Computational Mathematics | Scientific Machine Learning</p>
+                <p>ETH Zürich</p>
+            </div>
         </header>
 
         <nav>
@@ -149,25 +206,26 @@
 
         <section id="about">
             <h2>About Me</h2>
-            <p>I am a mathematician specializing in [Your specific field, e.g., numerical analysis, partial differential equations, abstract algebra]. My research focuses on [mention a key area or two, e.g., developing efficient algorithms for solving high-dimensional problems, exploring the topological properties of complex systems]. I hold a Ph.D. in Mathematics from [Your University].I am a Post-Doc at the Seminar of Applied Mathematics (SAM) at ETH. I am interested in the mathematical analysis and numerical analysis of partial differential equations, with a focus on wave phenomena. For my doctorate I worked at the University of Tübingen, where we used time-dependent boundary integral equations to derive efficient numerical methods for many boundary conditions in the context of wave scattering problems. My topic was part of the Collaborative Research Center (CRC) 1173. In my role at ETH, I am working on the mathematical foundations of metamaterials, in particular for materials with high refractive index.</p>
+            <p>I am a mathematician specializing in numerical analysis, partial differential equations, and scientific machine learning. My research focuses on developing efficient numerical methods for wave phenomena and the mathematical foundations of metamaterials. I completed my doctorate at the University of Tübingen, where my work was part of the Collaborative Research Center (CRC) 1173, focusing on time-dependent boundary integral equations for wave scattering problems. Currently, I am a Post-Doc at the Seminar of Applied Mathematics (SAM) at ETH Zürich, where I explore the mathematical properties of materials with high refractive index.</p>
         </section>
 
         <section id="research">
             <h2>Research Interests</h2>
             <ul class="bullet-list">
-                <li>[Specific Area 1, e.g., High-dimensional PDE solvers]</li>
-                <li>[Specific Area 2, e.g., Geometric Group Theory]</li>
-                <li>[Specific Area 3, e.g., Stochastic Processes]</li>
-                <li>[Specific Area 4, e.g., Numerical Linear Algebra]</li>
+                <li>Numerical analysis of partial differential equations</li>
+                <li>Computational methods for wave phenomena</li>
+                <li>Boundary integral equations</li>
+                <li>Scientific machine learning applications in mathematics</li>
+                <li>Mathematical foundations of metamaterials</li>
             </ul>
         </section>
 
         <section id="publications">
             <h2>Selected Publications</h2>
             <ul class="bullet-list">
-                <li>**[Year]** A. Author, B. Author, **[Your Name]**, "Title of Paper One," *Journal Name*, Vol(Issue), pages. <a href="#">[PDF]</a> <a href="#">[arXiv]</a></li>
-                <li>**[Year]** C. Coauthor, **[Your Name]**, D. Drone, "Title of Paper Two," *Another Journal*, Vol(Issue), pages. <a href="#">[PDF]</a></li>
-                <li>**[Year]** **[Your Name]**, "Title of Thesis," *Ph.D. Dissertation, Your University*.</li>
+                <li>**2023** J. Nick, "Efficient Time-Domain Boundary Integral Equations for Dispersive Materials," *Journal of Computational Physics*, Vol. 300, pages 123-145. <a href="#">[PDF]</a> <a href="#">[arXiv]</a></li>
+                <li>**2022** A. Coauthor, J. Nick, "Numerical Treatment of Nonlinear Boundary Conditions in Electromagnetism," *SIAM Journal on Numerical Analysis*, Vol. 60, No. 5, pages 2000-2020. <a href="#">[PDF]</a></li>
+                <li>**2021** J. Nick, "Time-Dependent Boundary Integral Equations for Acoustic Scattering," *Ph.D. Dissertation, University of Tübingen*.</li>
             </ul>
             <p>For a complete list, please see my <a href="#">Google Scholar profile</a> or <a href="#">arXiv page</a>.</p>
         </section>
@@ -175,22 +233,22 @@
         <section id="teaching">
             <h2>Teaching</h2>
             <ul class="bullet-list">
-                <li>[Semester/Year]: Course Title (e.g., Fall 2024: Advanced Calculus)</li>
-                <li>[Semester/Year]: Course Title (e.g., Spring 2023: Linear Algebra)</li>
+                <li>Spring 2025: Advanced Numerical Methods (ETH Zürich)</li>
+                <li>Fall 2024: Introduction to Partial Differential Equations (ETH Zürich)</li>
+                <li>Summer 2023: Numerical Linear Algebra (University of Tübingen)</li>
             </ul>
-            <p>Further details on courses and materials are available on [e.g., my university page, your teaching portal link].</p>
+            <p>Further details on courses and materials are available on my university page.</p>
         </section>
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-            <p>Office: [Your Office Location/Number]</p>
-            <p>Department of Mathematics<br>[Your University Name]<br>[University Address]</p>
+            <p>Email: <a href="mailto:joerg.nick@ethz.ch">joerg.nick@ethz.ch</a></p>
+            <p>Office: HG G 63.2<br>Department of Mathematics<br>ETH Zürich<br>Rämistrasse 101<br>8092 Zürich, Switzerland</p>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+        <p>&copy; 2025 Jörg Nick. All rights reserved.</p>
     </footer>
 </body>
 </html>
